@@ -428,7 +428,7 @@ client.on('messageDelete', message => {
     if(!logChannel) return;
  
     let messageDelete = new Discord.RichEmbed()
-    .setTitle('**[MESSAGE DELETE]**')
+    .setTitle('**تم حذف الرسالة**')
     .setColor('RED')
     .setThumbnail(message.author.avatarURL)
     .setDescription(`**\n**:wastebasket: Successfully \`\`DELETE\`\` **MESSAGE** In ${message.channel}\n\n**Channel:** \`\`${message.channel.name}\`\` (ID: ${message.channel.id})\n**Message ID:** ${message.id}\n**Sent By:** <@${message.author.id}> (ID: ${message.author.id})\n**Message:**\n\`\`\`${message}\`\`\``)
@@ -450,7 +450,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     if(oldMessage.content.startsWith('https://')) return;
  
     let messageUpdate = new Discord.RichEmbed()
-    .setTitle('**[MESSAGE EDIT]**')
+    .setTitle('**تم التعديل على الرسالة**')
     .setThumbnail(oldMessage.author.avatarURL)
     .setColor('BLUE')
     .setDescription(`**\n**:wrench: Successfully \`\`EDIT\`\` **MESSAGE** In ${oldMessage.channel}\n\n**Channel:** \`\`${oldMessage.channel.name}\`\` (ID: ${oldMessage.channel.id})\n**Message ID:** ${oldMessage.id}\n**Sent By:** <@${oldMessage.author.id}> (ID: ${oldMessage.author.id})\n\n**Old Message:**\`\`\`${oldMessage}\`\`\`\n**New Message:**\`\`\`${newMessage}\`\`\``)
@@ -475,7 +475,7 @@ client.on('roleCreate', role => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let roleCreate = new Discord.RichEmbed()
-        .setTitle('**[ROLE CREATE]**')
+        .setTitle('**تم تصنيع رتبة جديدة**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('GREEN')
@@ -498,7 +498,7 @@ client.on('roleDelete', role => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let roleDelete = new Discord.RichEmbed()
-        .setTitle('**[ROLE DELETE]**')
+        .setTitle('**تم حذف الرتبة**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RED')
@@ -522,7 +522,7 @@ client.on('roleUpdate', (oldRole, newRole) => {
  
         if(oldRole.name !== newRole.name) {
             let roleUpdateName = new Discord.RichEmbed()
-            .setTitle('**[ROLE NAME UPDATE]**')
+            .setTitle('**تم تغير اسم الرتبة**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` Role Name.\n\n**Old Name:** \`\`${oldRole.name}\`\`\n**New Name:** \`\`${newRole.name}\`\`\n**Role ID:** ${oldRole.id}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -543,7 +543,7 @@ client.on('roleUpdate', (oldRole, newRole) => {
                 var newColor = newRole.hexColor;
             }
             let roleUpdateColor = new Discord.RichEmbed()
-            .setTitle('**[ROLE COLOR UPDATE]**')
+            .setTitle('**تم تغير لون الرتبة**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` **${oldRole.name}** Role Color.\n\n**Old Color:** ${oldColor}\n**New Color:** ${newColor}\n**Role ID:** ${oldRole.id}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -592,7 +592,7 @@ client.on('channelCreate', channel => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let channelCreate = new Discord.RichEmbed()
-        .setTitle('**[CHANNEL CREATE]**')
+        .setTitle('**تم تصنيع روم جديد**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` **${roomType}** channel.\n\n**Channel Name:** \`\`${channel.name}\`\` (ID: ${channel.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('GREEN')
@@ -625,7 +625,7 @@ client.on('channelDelete', channel => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let channelDelete = new Discord.RichEmbed()
-        .setTitle('**[CHANNEL DELETE]**')
+        .setTitle('**تم حذف الروم**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` **${roomType}** channel.\n\n**Channel Name:** \`\`${channel.name}\`\` (ID: ${channel.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RED')
@@ -657,7 +657,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
  
         if(oldChannel.name !== newChannel.name) {
             let newName = new Discord.RichEmbed()
-            .setTitle('**[CHANNEL EDIT]**')
+            .setTitle('**تم التعديل على روم**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Name\n\n**Old Name:** \`\`${oldChannel.name}\`\`\n**New Name:** \`\`${newChannel.name}\`\`\n**Channel ID:** ${oldChannel.id}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -697,7 +697,7 @@ client.on('guildBanAdd', (guild, user) => {
         if(userID === client.user.id) return;
  
         let banInfo = new Discord.RichEmbed()
-        .setTitle('**[BANNED]**')
+        .setTitle('**تم اعطاء باند للعضو**')
         .setThumbnail(userAvatar)
         .setColor('DARK_RED')
         .setDescription(`**\n**:airplane: Successfully \`\`BANNED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -719,7 +719,7 @@ client.on('guildBanRemove', (guild, user) => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let unBanInfo = new Discord.RichEmbed()
-        .setTitle('**[UNBANNED]**')
+        .setTitle('**تم فك الباند عن العضو**')
         .setThumbnail(userAvatar)
         .setColor('GREEN')
         .setDescription(`**\n**:unlock: Successfully \`\`UNBANNED\`\` **${user.username}** From the server\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -743,7 +743,7 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
  
         if(oldGuild.name !== newGuild.name) {
             let guildName = new Discord.RichEmbed()
-            .setTitle('**[CHANGE GUILD NAME]**')
+            .setTitle('**تم تغير اسم السيرفر**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` The guild name.\n\n**Old Name:** \`\`${oldGuild.name}\`\`\n**New Name:** \`\`${newGuild.name}\`\`\n**By:** <@${userID}> (ID: ${userID})`)
@@ -754,7 +754,7 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
         }
         if(oldGuild.region !== newGuild.region) {
             let guildRegion = new Discord.RichEmbed()
-            .setTitle('**[CHANGE GUILD REGION]**')
+            .setTitle('**تم تغير دولة السيرفر**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` The guild region.\n\n**Old Region:** ${oldGuild.region}\n**New Region:** ${newGuild.region}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -797,7 +797,7 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
             }
  
             let verLog = new Discord.RichEmbed()
-            .setTitle('**[GUILD VERIFICATION LEVEL CHANGE]**')
+            .setTitle('**تم تغير مستوي حماية السيرفر**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` Guild verification level.\n\n**Old Verification Level:** ${oldVerLvl}\n**New Verification Level:** ${newVerLvl}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -830,7 +830,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             }
  
             let updateNickname = new Discord.RichEmbed()
-            .setTitle('**[UPDATE MEMBER NICKNAME]**')
+            .setTitle('**تم تغير اسم العضو**')
             .setThumbnail(userAvatar)
             .setColor('BLUE')
             .setDescription(`**\n**:spy: Successfully \`\`CHANGE\`\` Member Nickname.\n\n**User:** ${oldMember} (ID: ${oldMember.id})\n**Old Nickname:** ${oldNM}\n**New Nickname:** ${newNM}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -843,7 +843,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             let role = newMember.roles.filter(r => !oldMember.roles.has(r.id)).first();
  
             let roleAdded = new Discord.RichEmbed()
-            .setTitle('**[ADDED ROLE TO MEMBER]**')
+            .setTitle('**تم اضافة رتبة للعضو**')
             .setThumbnail(oldMember.guild.iconURL)
             .setColor('GREEN')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`ADDED\`\` Role to **${oldMember.user.username}**\n\n**User:** <@${oldMember.id}> (ID: ${oldMember.user.id})\n**Role:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -856,7 +856,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             let role = oldMember.roles.filter(r => !newMember.roles.has(r.id)).first();
  
             let roleRemoved = new Discord.RichEmbed()
-            .setTitle('**[REMOVED ROLE FROM MEMBER]**')
+            .setTitle('**تم سحب الرتبة من العضو**')
             .setThumbnail(oldMember.guild.iconURL)
             .setColor('RED')
             .setDescription(`**\n**:negative_squared_cross_mark: Successfully \`\`REMOVED\`\` Role from **${oldMember.user.username}**\n\n**User:** <@${oldMember.user.id}> (ID: ${oldMember.id})\n**Role:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -868,7 +868,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     })
     if(oldMember.guild.owner.user.id !== newMember.guild.owner.user.id) {
         let newOwner = new Discord.RichEmbed()
-        .setTitle('**[UPDATE GUILD OWNER]**')
+        .setTitle('**اونر شيب جديد للسيرفر**')
         .setThumbnail(oldMember.guild.iconURL)
         .setColor('GREEN')
         .setDescription(`**\n**:white_check_mark: Successfully \`\`TRANSFER\`\` The Owner Ship.\n\n**Old Owner:** <@${oldMember.user.id}> (ID: ${oldMember.user.id})\n**New Owner:** <@${newMember.user.id}> (ID: ${newMember.user.id})`)
@@ -883,7 +883,7 @@ client.on('guildMemberAdd', member => {
   if(!logChannel) return;
  
   let newMember = new Discord.RichEmbed()
-  .setTitle('**[NEW MEMBER ADDED]**')
+  .setTitle('**دخل عضو جديد**')
   .setThumbnail(member.user.avatarURL)
   .setColor('GREEN')
   .setDescription(`**\n**:arrow_lower_right: Joined **${member.user.username}** To the server!\n\n**User:** <@${member.user.id}> (ID: ${member.user.id})\n**Days In Discord:** ${Days(member.user.createdAt)}`)
@@ -903,7 +903,7 @@ client.on('guildMemberRemove', member => {
   if(!logChannel) return;
  
   let leaveMember = new Discord.RichEmbed()
-  .setTitle('**[LEAVE MEMBER]**')
+  .setTitle('**خرج عضو من السيرفر**')
   .setThumbnail(member.user.avatarURL)
   .setColor('GREEN')
   .setDescription(`**\n**:arrow_upper_left: Leave **${member.user.username}** From the server.\n\n**User:** <@${member.user.id}> (ID: ${member.user.id})`)
@@ -980,7 +980,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 // Join Voice Channel
     if(voiceOld.voiceChannelID !== voiceNew.voiceChannelID && !voiceOld.voiceChannel) {
         let voiceJoin = new Discord.RichEmbed()
-        .setTitle('**[JOIN VOICE ROOM]**')
+        .setTitle('**دخل الى روم صوتي**')
         .setColor('GREEN')
         .setThumbnail(voiceOld.user.avatarURL)
         .setDescription(`**\n**:arrow_lower_right: Successfully \`\`JOIN\`\` To Voice Channel.\n\n**Channel:** \`\`${voiceNew.voiceChannel.name}\`\` (ID: ${voiceNew.voiceChannelID})\n**User:** ${voiceOld} (ID: ${voiceOld.id})`)
@@ -992,7 +992,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 // Leave Voice Channel
     if(voiceOld.voiceChannelID !== voiceNew.voiceChannelID && !voiceNew.voiceChannel) {
         let voiceLeave = new Discord.RichEmbed()
-        .setTitle('**[LEAVE VOICE ROOM]**')
+        .setTitle('**خرج من روم صوتي**')
         .setColor('GREEN')
         .setThumbnail(voiceOld.user.avatarURL)
         .setDescription(`**\n**:arrow_upper_left: Successfully \`\`LEAVE\`\` From Voice Channel.\n\n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannelID})\n**User:** ${voiceOld} (ID: ${voiceOld.id})`)
