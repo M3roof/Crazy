@@ -2,15 +2,15 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
-const prefix = '!';
+const prefix = 'C';
 client.on('ready', () => {
-client.user.setGame(`! Crazy`,"http://twitch.tv/y04zgamer")
+client.user.setGame(`Type : Chelp`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', message => {
-             var prefix = "!" // البريفكس
+             var prefix = "C" // البريفكس
 if (message.content.startsWith(prefix + "time")) { // الامر
 let user = message.mentions.users.first();
 var args = message.content.split(" ").slice(1);
@@ -53,7 +53,7 @@ client.on('message', message => {
   if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
-  /*let b5bzlog = client.channels.find("name", "5bz-log");
+  let b5bzlog = client.channels.find("name", "log");
 
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
   if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
@@ -82,10 +82,10 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === "!mute") {
+    if (command === "Cmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
+    let modlog = client.channels.find('name', 'log');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
@@ -118,10 +118,10 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === "!unmute") {
+    if (command === "Cunmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
+    let modlog = client.channels.find('name', 'log');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** لا يوجد لديك رتبه الميوت 'Muted' **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
@@ -195,21 +195,21 @@ message.author.send(`
 ***__وصف عن البوت__***
 **
 ─════════════ {✯اوامر عامة✯} ════════════─
-❧ !time ➺ الوقت و اليوم و التاريخ
-❧ !mb ➺ حـألـة الاعضاء
+❧ Ctime ➺ الوقت و اليوم و التاريخ
+❧ Cmb ➺ حـألـة الاعضاء
 ❧ Soon ➺ قريبا
 ❧ Soon ➺ قريبا
 ❧ Soon ➺ قريبا
 ❧ Soon ➺ قريبا
 ❧ Soon ➺ قريبا
 ─════════════ {✯اوامر الادارة✯} ════════════─
-❧ !ban ➺ اعطاء العضو باند
-❧ !kick ➺ طرد العضو
-❧ !mute ➺ اعطاء ميوت للعضو
-❧ !unmute ➺ تفكيك الميوت
-❧ !cl ➺ تقفيل الشات
-❧ !op ➺ فتح الشات
-❧ !bc ➺ برودكاست
+❧ Cban ➺ اعطاء العضو باند
+❧ Ckick ➺ طرد العضو
+❧ Cmute ➺ اعطاء ميوت للعضو
+❧ Cunmute ➺ تفكيك الميوت
+❧ Ccl ➺ تقفيل الشات
+❧ Cop ➺ فتح الشات
+❧ Cbc ➺ برودكاست
 ─════════════ {✯! Crazy Community✯} ════════════─
 **
 `);
@@ -218,7 +218,7 @@ message.author.send(`
 
 
 client.on("message", message => {
-var prefix = "!" // البريفكس
+var prefix = "C" // البريفكس
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content.startsWith(prefix + "clear")) { // الامر
         if(!message.channel.guild) return message.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
@@ -246,7 +246,7 @@ footer: {
 
 client.on('message', message => {
 if(message.author.bot) return;
-  var prefix = '!'; // البريفكس
+var prefix = "C"
   
   if (message.content.startsWith(prefix + "id")) { // الامر
       message.react("🆔") 
@@ -292,7 +292,7 @@ client.on('guildMemberAdd', member=> {
     });
 
 client.on('message', message => {
-    var prefix = "!";
+    var prefix = "C";
     
         if (message.author.id === client.user.id) return;
         if (message.guild) {
@@ -329,14 +329,14 @@ client.on('message', message => {
 .addField(' **عددنا الأن | :busts_in_silhouette:** ',`[ ${member.guild.memberCount} ]`)
     .setColor('RANDOM')
     .setImage('https://cdn.pg.sa/B5UN8bJSFF.png')
-var channel =member.guild.channels.find('name', '✵-「chat')
+var channel =member.guild.channels.find('name', 'tèxt')
 if (!channel) return;
 channel.send({embed : embed});
 });
 	
 	
 	client.on('message', message => {
-var prefix = "!"
+var prefix = "C"
     if(message.content.startsWith (prefix  + 'mb')) {
         if(!message.channel.guild) return;
       let embed = new Discord.RichEmbed()
@@ -362,7 +362,7 @@ var prefix = "!"
 
 
 client.on('message',async msg => {
-  var p = "!";
+  var p = "C";
   if(msg.content.startsWith(p + "user")) {
   if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
   if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
@@ -388,7 +388,7 @@ Dat = currentTime.getDate()
 
 client.on('message', message => {
 
-    if(message.content === prefix + "!cl") {
+    if(message.content === prefix + "Ccl") {
                         if(!message.channel.guild) return message.reply('** This command only for servers**');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
@@ -400,7 +400,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
            });
              }
 
- if(message.content === prefix + "!op") {
+ if(message.content === prefix + "Cop") {
                      if(!message.channel.guild) return message.reply('** This command only for servers**');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
