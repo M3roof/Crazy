@@ -187,7 +187,7 @@ client.on('message', message => {
 
 
 client.on('message' , message => {
-if(message.content === '!help') {
+if(message.content === 'Chelp') {
   var EsTeKnAN = new Discord.RichEmbed()
   .setColor('RANDOM')
 message.author.send(`
