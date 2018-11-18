@@ -1034,6 +1034,56 @@ client.on('message',async message => {
 });
 
 
+const sug = JSON.parse(fs.readFileSync('./sug.json' , 'utf8'));
+ 
+client.on('message', message => {
+    let room = message.content.split(" ").slice(1);
+    let findroom = message.guild.channels.find('name', `${room}`)
+    if(message.content.startsWith(prefix + "setSug")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+if(!room) return message.channel.send('**يرجأء وضع اسم الروم**')
+if(!findroom) return message.channel.send('**لا يمكنني العثور على الروم**')
+let embed = new Discord.RichEmbed()
+.setTitle('**تم ارسال اقتراحك بنجاح**')
+.addField('الروم:', `${room}`)
+.addField('Requested By:', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+sug[message.guild.id] = {
+channel: room,
+}
+fs.writeFile("./sug.json", JSON.stringify(sug), (err) => {
+if (err) console.error(err)
+})
+   client.on('message', message => {
 
+ 
+    if(message.content.startsWith(`${prefix}suggest`)) {
+      let botname = 'Crazy';
+      if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+      let suggest = message.content.split(" ").slice(1);
+      if(!suggest) return message.reply(`**يرجأء كتابة الاقتراح**`)
+    let findchannel = (message.guild.channels.find('name', `${sug[message.guild.id].channel}`))
+    if(!findchannel) return message.channel.send(`Error 404: The Suggest Channel Cant Find Or Not Set To Set The Suggest Channel Type: ${prefix}setSug`)
+    message.channel.send(`Done Your Suggest Will Be Seen By The Staffs`)
+    let sugembed = new Discord.RichEmbed()
+    .setTitle('اقتراح جديد')
+    .addField('صاحب الاقتراح:', `${message.author}`)
+    .addField('الاقتراح هو:', `${suggest}`)
+    .setFooter(botname, client.user.avatarURL);
+    findchannel.sendEmbed(sugembed)
+        .then(function (message) {
+          message.react('✅')
+          message.react('❌')
+        })
+        .catch(err => {
+            message.reply(`Error 404: The Suggest Channel Cant Find Or Not Set To Set The Suggest Channel Type: ${prefix}setSug`)
+            console.error(err);
+        });
+        }
+      })
+    }})
 
 client.login(process.env.BOT_TOKEN);
