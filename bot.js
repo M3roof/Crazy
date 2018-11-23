@@ -7,6 +7,18 @@ client.user.setGame(`Quietnees Server`,"http://twitch.tv/y04zgamer")
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+
+
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","Quiet"));
+    });
+
+
+
+
+
+
+
 var prefix = "$"
 client.on('message', message => {
   if (message.author.x5bz) return;
