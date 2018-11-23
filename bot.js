@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
-const prefix = '.';
+const prefix = '$';
 client.on('ready', () => {
 client.user.setGame(`Type : Chelp`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
@@ -9,7 +9,7 @@ client.user.setGame(`Type : Chelp`,"http://twitch.tv/y04zgamer")
 });
 
 
-var prefix = "."
+var prefix = "$"
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -52,7 +52,7 @@ client.on('message', message => {
 
 
 
-var prefix = "."
+var prefix = "$"
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -96,7 +96,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    var prefix = ".";
+    var prefix = "$";
     
         if (message.author.id === client.user.id) return;
         if (message.guild) {
@@ -134,7 +134,7 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === ".mute") {
+    if (command === "$mute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
     let modlog = client.channels.find('name', 'mute-log');
@@ -175,7 +175,7 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === ".unmute") {
+    if (command === "$unmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
     let modlog = client.channels.find('name', 'mute-log');
@@ -202,6 +202,24 @@ client.on("message", message => {
   };
   
   });
+
+
+
+
+ client.on('guildMemberAdd', member => {
+    var embed = new Discord.RichEmbed()
+    .setThumbnail(member.user.avatarURL)
+.addField('**عضو جديد**')
+.addField('**الاسم | :bust_in_silhouette:**',`[ ${member} ]`)
+.addField(' **الايدي | :id:** ',`[ ${member.id} ]`)
+.addField('**تاق العضو | :bow_and_arrow:**', member.user.discriminator, true)
+.addField(' **عددنا الأن | :busts_in_silhouette:** ',`[ ${member.guild.memberCount} ]`)
+    .setColor('RANDOM')
+    .setImage('https://cdn.pg.sa/B5UN8bJSFF.png')
+var channel =member.guild.channels.find('name', 'quiet')
+if (!channel) return;
+channel.send({embed : embed});
+});
 
 
 
