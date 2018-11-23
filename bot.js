@@ -1,15 +1,15 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
-const prefix = 'C';
+const prefix = '.';
 client.on('ready', () => {
-client.user.setGame(`Enjoy :)`,"http://twitch.tv/y04zgamer")
+client.user.setGame(`Type : Chelp`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 
-var prefix = "C"
+var prefix = "."
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -52,7 +52,7 @@ client.on('message', message => {
 
 
 
-var prefix = "C"
+var prefix = "."
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -96,7 +96,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    var prefix = "C";
+    var prefix = ".";
     
         if (message.author.id === client.user.id) return;
         if (message.guild) {
@@ -134,7 +134,7 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === "Cmute") {
+    if (command === ".mute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
     let modlog = client.channels.find('name', 'mute-log');
@@ -175,7 +175,7 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === "Cunmute") {
+    if (command === ".unmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
     let modlog = client.channels.find('name', 'mute-log');
