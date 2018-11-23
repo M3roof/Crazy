@@ -263,6 +263,58 @@ client.on("guildMemberAdd", async member => {
 
 
 
+const sug = JSON.parse(fs.readFileSync('./sug.json' , 'utf8'));
+ 
+client.on('message', message => {
+    let room = message.content.split(" ").slice(1);
+    let findroom = message.guild.channels.find('name', `${room}`)
+    if(message.content.startsWith(prefix + "setSug")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**اسف لكن ليس لديك صلاحية** `MANAGE_GUILD`' );
+if(!room) return message.channel.send('يرجو اختيار الروم')
+if(!findroom) return message.channel.send('لم استطع ايجاد الروم')
+let embed = new Discord.RichEmbed()
+.setTitle('**تم تحديد روم الاقتراحات**')
+.addField('الروم:', `${room}`)
+.addField('Requested By:', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+sug[message.guild.id] = {
+channel: room,
+}
+fs.writeFile("./sug.json", JSON.stringify(sug), (err) => {
+if (err) console.error(err)
+})
+   client.on('message', message => {
+
+ 
+    if(message.content.startsWith(`$sugg`)) {
+      let botname = 'Quietnees Server';
+      if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+      let suggest = message.content.split(" ").slice(1);
+      if(!suggest) return message.reply(`**يرجو كتابة الاقتراح**`)
+    let findchannel = (message.guild.channels.find('name', `${sug[message.guild.id].channel}`))
+    if(!findchannel) return message.channel.send(`Error 404: The Suggest Channel Cant Find Or Not Set To Set The Suggest Channel Type: ${prefix}setSug`)
+    message.channel.send(`تم ارسال اقتراح للادارة بنجااح`)
+    let sugembed = new Discord.RichEmbed()
+    .setTitle('اقتراح جديد')
+    .addField('تم الاقتراح من قبل:', `${message.author}`)
+    .addField('الاقتراح:', `${suggest}`)
+    .setFooter(botname, client.user.avatarURL);
+    findchannel.sendEmbed(sugembed)
+        .then(function (message) {
+          message.react('✅')
+          message.react('❌')
+        })
+        .catch(err => {
+            message.reply(`لم يتم ايجاد روم الاقتراحات او الادارة قام بتعطيل الامر`)
+            console.error(err);
+        });
+        }
+      })
+    }})
+
 
 
 client.login(process.env.BOT_TOKEN);
