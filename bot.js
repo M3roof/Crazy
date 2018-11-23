@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const moment = require('moment');
 const prefix = '$';
 client.on('ready', () => {
-client.user.setGame(`Type : Chelp`,"http://twitch.tv/y04zgamer")
+client.user.setGame(`Quietnees Server`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
   console.log(`Logged in as ${client.user.tag}!`);
 });
