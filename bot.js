@@ -216,20 +216,7 @@ client.on("message", message => {
 
 
 
- client.on('guildMemberAdd', member => {
-    var embed = new Discord.RichEmbed()
-    .setThumbnail(member.user.avatarURL)
-.addField('**عضو جديد**')
-.addField('**الاسم | :bust_in_silhouette:**',`[ ${member} ]`)
-.addField(' **الايدي | :id:** ',`[ ${member.id} ]`)
-.addField('**تاق العضو | :bow_and_arrow:**', member.user.discriminator, true)
-.addField(' **عددنا الأن | :busts_in_silhouette:** ',`[ ${member.guild.memberCount} ]`)
-    .setColor('RANDOM')
-    .setImage('https://cdn.pg.sa/B5UN8bJSFF.png')
-var channel =member.guild.channels.find('name', 'quiet')
-if (!channel) return;
-channel.send({embed : embed});
-});
+
 
 
 
