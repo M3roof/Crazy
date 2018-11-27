@@ -913,6 +913,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 const fs = require('fs')
 const reply = JSON.parse(fs.readFileSync('./replys.json' , 'utf8'));
 client.on('message', async message => {
+var prefix = "$"
     let messageArray = message.content.split(" ");
    if(message.content.startsWith(prefix + "setReply")) {
     let filter = m => m.author.id === message.author.id;
