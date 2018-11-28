@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
 client.on('ready', () => {
-client.user.setGame(`Quietnees Server`,"http://twitch.tv/y04zgamer")
-    client.user.setStatus("dnd")
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
@@ -12,6 +10,38 @@ client.user.setGame(`Quietnees Server`,"http://twitch.tv/y04zgamer")
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","Quiet"));
     });
+
+
+
+
+
+const developers = ["509243410234867724"]
+const adminprefix = "$";
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!developers.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**Done   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'wat')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**Done   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'lis')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**Done  ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/M3roof");
+      message.channel.send(`**Done ${argresult} **`)
+}
+});
+
+
+
+
 
 
 
