@@ -77,98 +77,89 @@ client.on("message", message => {
 
 
 
-client.on('message', async rokz => {
 
-    if(rokz.content.startsWith(prefix + ".staff")) {
-
-      let lang = '';
-
-      let time = '';
-
-      let expe = '';
-
-      let fillter = m => m.author.id === rokz.author.id
-
-      await rokz.channel.send("**ما لغت البرمجه الخاصه بك ؟**").then(e => {
-
-     rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-     .then(co => {
-
-       lang = co.first().content;
-
-        co.first().delete();
-
-
-       e.edit(`var وش هو الفرق بين
-const و 
-[${lang}]`)
-
-       rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-       .then(col => {
-
-         time = col.first().content;
-
-          col.first().delete();
-
-
-            e.edit(`كم مدة خبرتك ؟
-[${time}]
-[${lang}]`)
-
-            rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-            .then(coll => {
-
-              expe = coll.first().content;
-
-               coll.first().delete();
-
-
-               e.edit(`جاري تقديمك...
-[${expe}]
-[${time}]
-[${lang}]`)
-
-              let rokzz = rokz.guild.channels.find("name","✵-「submit")
-
-              setTimeout(() => {
-
-                e.edit("**تم التقديم**")
-
-              }, 3000)
-
-              rokzz.send(`
-» اللغة : **${lang}**
-» المدة : **${time}**
-» الخبرة : **${expe}**
-تم التقديم بواسطة: ${rokz.author}
-`).then(rokzzz => {
-
-                  rokzzz.react(":CheckMark:")
-
-                  rokzzz.react(":WrongMark:")
-
-                })
-
-            })
-
-       })
-
-     })
-
-   })
-
-    }
-
-  })
-  
+    client.on('message', message => {
+        var prefix = ".";
+        if (message.author.bot) return;
+        if (!message.content.startsWith(prefix)) return;
+      
+        let command = message.content.split(" ")[0];
+        command = command.slice(prefix.length);
+      
+      
+      let args = message.content.split(" ").slice(1);
+      let x = args.join(" ")
+        if(message.content.startsWith(prefix + 'say')) {
+            message.channel.send(''+x);
+                message.delete(999)
+        }
+        
+       
+      });
 
  
 
 
 
+
+
+
+
+
+
+client.on('message', message => {
+ var prefix = "."
+
+if (message.content.toLowerCase().startsWith(prefix + `new`)) {
+    const reason = message.content.split(" ").slice(1).join(" ");
+    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`\`Support Team\` **لا توجد رتبة بأسم**`);
+    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`**لديك تذكرة مفتوحة بالفعل**`);
+    message.guild.createChannel(`ticket`, "text").then(c => {
+        let role = message.guild.roles.find("name", "Support Team");
+        let role2 = message.guild.roles.find("name", "@everyone");
+        c.overwritePermissions(role, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        c.overwritePermissions(role2, {
+            SEND_MESSAGES: false,
+            READ_MESSAGES: false
+        });
+        c.overwritePermissions(message.author, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        message.channel.send(`:white_check_mark: تم انشاء التذكرة`);
+        const embed = new Discord.RichEmbed()
+        .setColor(0xCF40FA)
+        .addField(`${message.author.username} **مرحبا بك**`, `
+يرجى محاولة شرح سبب فتح هذه التذكرة بأكبر قدر ممكن من التفاصيل. سيكون فريق الدعم ** ** هنا قريباً لمساعدتك`)
+        .setTimestamp();
+        c.send({ embed: embed });
+    }).catch(console.error);
+}
+if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+    if (!message.channel.name.startsWith(`ticket`)) return message.channel.send(`لا يمكنك استخدام أمر الإغلاق خارج قناة التذاكر`);
+
+    message.channel.send(`**confirm** : هل انت متأكد من اغلاق التذكرة ؟ اذا انت متأكد اكتب`)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === 'confirm', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('انتهي وقت اغلاق التذكرة').then(m2 => {
+              m2.delete();
+          }, 3000);
+        });
+    });
+}
+
+});
 
 
 
