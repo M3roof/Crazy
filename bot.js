@@ -79,7 +79,7 @@ client.on("message", message => {
 
 client.on('message', async rokz => {
 
-    if(rokz.content.startsWith(prefix + ".تقديم")) {
+    if(rokz.content.startsWith(prefix + ".staff")) {
 
       let lang = '';
 
@@ -163,73 +163,12 @@ const و
     }
 
   })
+  
+
+ 
 
 
 
-
-
-
-
-
-  client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-
-let Room = client.channels.get('524027061606678538');
-
-if(message.content.startsWith(prefix + ".رفض")) {
-
-if(message.guild.id !== '524027061606678538') return;
-
- if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
-
-
-if(!mention) return message.reply("منشن شخص");
-
-
-
-Room.send(`
-**» العضو :** ${mention}
-[ :x: ] :: لقد تم رفض العضو`);
-
-}
-
-});
-
-
-
-
-
-
-
-
-
-
-
-client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-
-let Room = client.channels.get('524026990978793504');
-
-if(message.content.startsWith(prefix + ".قبول")) {
-
-if(message.guild.id !== '524026990978793504') return;
-
- if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
-
-
-if(!mention) return message.reply("منشن شخص");
-
-
-
-Room.send(`
-**» العضو :** ${mention}
-[ :white_check_mark: ] :: لقد تم قبول العضو واعطائه رتبة سبورت`);
-
-}
-
-});
 
 
 
