@@ -178,7 +178,7 @@ const code = '.';//prefix
 client.on('message',async message => {
     if(message.content.startsWith(code + "js")) {
   if(!message.channel.guild) return message.reply('This Command For Servers Only !');
-          if(message.channel.name !== 'sharejs') return message.reply('يجب كتابه الامر في روم باسم sharejs')
+          if(message.channel.name !== '✵-「node_js') return message.reply('**✵-「staff-commands يجب كتابة الامر في روم اسمه**')
     let jscodes = message.guild.channels.find(`name`, "✵-「node_js");
     if(!jscodes) return message.channel.send(":x:لم اجد الروم الخاص بنشر الاكواد");
       let filter = m => m.author.id === message.author.id;
@@ -261,6 +261,35 @@ ${thisMessage}\`\`\`
 }
 );
       })}});
+
+
+
+
+
+
+
+
+
+
+client.on('ready', function(){//npm i ms 
+    var ms = 60000 ;
+    var setGame = [`Omega`,'Omega Codes'];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/m3roof`);
+    }, ms);
+});
+
+
+
 
 
 
