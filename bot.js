@@ -17,7 +17,7 @@ client.on('guildMemberAdd', member=> {
 
 
 client.on("message", message => {
-    var prefix = "O";
+    var prefix = ".";
         if (message.author.id === client.user.id) return;
         if (message.guild) {
        let embed = new Discord.RichEmbed()
