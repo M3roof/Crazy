@@ -27,7 +27,7 @@ client.on('message', message => {
     }
             message.guild.members.forEach(m => {
        if(!message.member.hasPermission('ADMINISTRATOR')) return;
-                .addField('', args)
+                .addField('Message', args)
                 .setColor('#ff0000')
                 m.send(`[${m}]`);
                 m.send(`${m}`,{embed: bc});
