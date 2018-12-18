@@ -13,7 +13,7 @@ client.on('ready', () => {
 
 
 client.on("message", message => {
-    var prefix = ".";
+    var prefix = "*";
         if (message.author.id === client.user.id) return;
         if (message.guild) {
        let embed = new Discord.RichEmbed()
@@ -46,20 +46,7 @@ client.on("message", message => {
 
 
 
-client.on('message', msg => {
 
-    if (msg.content == '.join') { /// هنا اكتب الامر و البرفيكس
-        if (msg.member.voiceChannel) {
-
-     if (msg.member.voiceChannel.joinable) {
-         msg.member.voiceChannel.join().then(msg.react(':white_check_mark:'));
-     }
-    }
-}
-})
-client.on('ready', () => {
-    client.channels.get("524007254475800576").join();
-    });
 
 
 
@@ -70,7 +57,7 @@ client.on('ready', () => {
 
 
 client.on("message", message => {
-  if(message.content.startsWith(".verify")) {
+  if(message.content.startsWith("*verify")) {
     let num = Math.floor((Math.random() * 4783) + 10);
 
     message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
@@ -81,7 +68,7 @@ client.on("message", message => {
       }).then(collected => {
         message.delete();
         m.delete();
-        message.member.addRole(message.guild.roles.find(c => c.name == "✵- Member"));
+        message.member.addRole(message.guild.roles.find(c => c.name == "• Last » Member"));
       }).catch(() => {
         m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
       });
@@ -98,7 +85,7 @@ client.on("message", message => {
 
 
     client.on('message', message => {
-        var prefix = ".";
+        var prefix = "*";
         if (message.author.bot) return;
         if (!message.content.startsWith(prefix)) return;
       
@@ -127,7 +114,7 @@ client.on("message", message => {
 
 
 client.on('message', message => {
- var prefix = "."
+ var prefix = "*"
 
 if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
@@ -202,7 +189,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 
 client.on('ready', function(){//npm i ms 
     var ms = 60000 ;
-    var setGame = [`Omega`,'Omega Codes'];
+    var setGame = [`SnOw`,'SnOw Code'];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -231,7 +218,7 @@ client.on('ready', function(){//npm i ms
 
 
 client.on('message', message => {
-var prefix = "."
+var prefix = "*"
     if (message.content.startsWith(prefix + 'clear')) {
       if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ليس لديك برمشن[*MANAGE_MESSAGES*] `).catch(console.error);
   message.delete()
