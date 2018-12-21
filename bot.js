@@ -12,32 +12,7 @@ client.on('ready', () => {
 
 
 
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '518661183105138688').setName("ح");
-client.channels.find('id', '518661183105138688').setName("حي");
-client.channels.find('id', '518661183105138688').setName("حيا");
-client.channels.find('id', '518661183105138688').setName("حياك");
-client.channels.find('id', '518661183105138688').setName("حياك ا");
-client.channels.find('id', '518661183105138688').setName("حياك ال");
-client.channels.find('id', '518661183105138688').setName("حياك الل");
-client.channels.find('id', '518661183105138688').setName("حياك الله");
-client.channels.find('id', '518661183105138688').setName("حياك الله ف");
-client.channels.find('id', '518661183105138688').setName("حياك الله في");
-client.channels.find('id', '518661183105138688').setName("حياك الله في س");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سي");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سير");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرف");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر س");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر سن");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر سنو");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر سنو ك");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر سنو كو");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر سنو كود");
-client.channels.find('id', '518661183105138688').setName("حياك الله في سيرفر سنو كودز");
-  }, 3000);
-});
+
 
 
 
