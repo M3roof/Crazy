@@ -12,6 +12,40 @@ client.on('ready', () => {
 
 
 
+client.on("ready", async  => {
+setInterval(function(){
+client.channels.find('id', '525681181593698332').setName("W");
+client.channels.find('id', '525681181593698332').setName("We");
+client.channels.find('id', '525681181593698332').setName("Wel");
+client.channels.find('id', '525681181593698332').setName("Welc");
+client.channels.find('id', '525681181593698332').setName("Welco");
+client.channels.find('id', '525681181593698332').setName("Welcom");
+client.channels.find('id', '525681181593698332').setName("Welcome");
+client.channels.find('id', '525681181593698332').setName("Welcome T");
+client.channels.find('id', '525681181593698332').setName("Welcome To");
+client.channels.find('id', '525681181593698332').setName("Welcome To S");
+client.channels.find('id', '525681181593698332').setName("Welcome To Sn");
+client.channels.find('id', '525681181593698332').setName("Welcome To SnO");
+client.channels.find('id', '525681181593698332').setName("Welcome To SnOw");
+client.channels.find('id', '525681181593698332').setName("Welcome To SnOw C");
+client.channels.find('id', '525681181593698332').setName("Welcome To SnOw Co");
+client.channels.find('id', '525681181593698332').setName("Welcome To SnOw Cod");
+client.channels.find('id', '525681181593698332').setName("Welcome To SnOw Code");
+  }, 3000);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.on("message", message => {
     var prefix = "*";
         if (message.author.id === client.user.id) return;
