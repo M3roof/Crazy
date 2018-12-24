@@ -6,6 +6,7 @@ const ytdl = require('ytdl-core');
 const moment = require('moment');
 const request = require('request');
 const fs = require("fs");
+var adminprefix = '*'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
