@@ -270,7 +270,7 @@ client.on('guildMemberAdd', member => {
     .setThumbnail(member.user.avatarURL)
   .addField("**Welcome** **~~__To SnOw Code__~~** :tada:" ,member.user.username )
     .setColor('RANDOM')
-var channel =member.guild.channels.find('name', '✵-「p-chat')
+var channel =member.guild.channels.find('name', '⛄-「p-chat')
 if (!channel) return;
 channel.send({embed : embed});
 });
