@@ -265,15 +265,7 @@ client.on('ready', function(){//npm i ms
 
 
 
-client.on('guildMemberAdd', member => {
-    var embed = new Discord.RichEmbed()
-    .setThumbnail(member.user.avatarURL)
-  .addField("**Welcome** **~~__To SnOw Code__~~** :tada:" ,member.user.username )
-    .setColor('RANDOM')
-var channel =member.guild.channels.find('name', '⛄-「p-chat')
-if (!channel) return;
-channel.send({embed : embed});
-});
+
 
 
 
